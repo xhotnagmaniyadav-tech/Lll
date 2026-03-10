@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nagmani Web</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:black;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* Logo */
+.logo{
+font-size:40px;
+font-weight:bold;
+margin-top:30px;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
+animation: glow 3s infinite alternate;
+}
+
+@keyframes glow{
+0%{color:#00ffff;}
+50%{color:#ff00ff;}
+100%{color:#00ff00;}
+}
+
+.container{
+position:relative;
+z-index:2;
+}
+
+h1{
+font-size:35px;
+margin-top:40px;
+}
+
+p{
+font-size:18px;
+}
+
+/* canvas background */
+#bg{
+position:fixed;
+top:0;
+left:0;
+z-index:1;
+}
+</style>
+
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="container">
+
+<div class="logo">⚡ NAGMANI WEB ⚡</div>
+
+<h1>Welcome To Nagmani Website</h1>
+
+<p>ADCA+ Certificate Holder</p>
+<p>HTML | CSS | JavaScript Developer</p>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<200;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*3,
+speedX:(Math.random()-0.5)*2,
+speedY:(Math.random()-0.5)*2
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x += p.speedX;
+p.y += p.speedY;
+
+if(p.x>canvas.width || p.x<0) p.speedX *= -1;
+if(p.y>canvas.height || p.y<0) p.speedY *= -1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="cyan";
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>

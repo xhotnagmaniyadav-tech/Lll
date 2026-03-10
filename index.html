@@ -2,116 +2,233 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Nagmani Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagmani Yadav Resume</title>
 
 <style>
+
 body{
 margin:0;
-font-family:Arial;
-background:black;
-color:white;
-text-align:center;
+font-family: Arial;
+background:#111;
+color:#333;
+overflow-x:hidden;
+}
+
+/* 3D Animated Background */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
 overflow:hidden;
 }
 
-/* Logo */
-.logo{
-font-size:40px;
-font-weight:bold;
-margin-top:30px;
-color:#00ffff;
-text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
-animation: glow 3s infinite alternate;
+.circle{
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+animation:move 15s infinite alternate;
 }
 
-@keyframes glow{
-0%{color:#00ffff;}
-50%{color:#ff00ff;}
-100%{color:#00ff00;}
+.c1{
+width:400px;
+height:400px;
+background:#ff4d4d;
+top:10%;
+left:10%;
 }
+
+.c2{
+width:400px;
+height:400px;
+background:#3a86ff;
+top:40%;
+left:60%;
+animation-duration:18s;
+}
+
+.c3{
+width:400px;
+height:400px;
+background:#ff9f1c;
+top:70%;
+left:20%;
+animation-duration:20s;
+}
+
+@keyframes move{
+from{transform:translateY(-50px) translateX(-50px);}
+to{transform:translateY(50px) translateX(50px);}
+}
+
+/* Main Card */
 
 .container{
-position:relative;
-z-index:2;
+max-width:500px;
+margin:40px auto;
+background:white;
+border-radius:20px;
+padding:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Profile */
+
+.profile{
+text-align:center;
+}
+
+.profile img{
+width:150px;
+height:150px;
+border-radius:50%;
+border:6px solid #ff5733;
 }
 
 h1{
-font-size:35px;
-margin-top:40px;
+color:#ff5733;
+margin:10px 0;
 }
 
-p{
-font-size:18px;
+.subtitle{
+font-weight:bold;
 }
 
-/* canvas background */
-#bg{
-position:fixed;
-top:0;
-left:0;
-z-index:1;
+/* Buttons */
+
+.buttons{
+margin-top:20px;
 }
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+margin:8px;
+border-radius:30px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.whatsapp{background:#25D366;}
+.email{background:#3498db;}
+.call{background:#ff5733;}
+
+/* Section */
+
+.section{
+margin-top:30px;
+}
+
+.title{
+background:linear-gradient(90deg,#ff5733,#3a86ff);
+color:white;
+padding:10px;
+border-radius:10px;
+font-weight:bold;
+}
+
+.section p{
+margin:10px 0;
+}
+
+/* Footer */
+
+.footer{
+text-align:center;
+margin-top:30px;
+font-size:14px;
+color:#777;
+}
+
 </style>
-
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<div class="bg">
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+</div>
 
 <div class="container">
 
-<div class="logo">⚡ NAGMANI WEB ⚡</div>
+<div class="profile">
 
-<h1>Welcome To Nagmani Website</h1>
+<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
 
-<p>ADCA+ Certificate Holder</p>
-<p>HTML | CSS | JavaScript Developer</p>
+<h1>Nagmani Yadav</h1>
+
+<p class="subtitle">12th Pass | ADCA+ Certified</p>
+
+<p>Email: xhotnagmaniyadav@gmail.com</p>
+<p>Phone: 9204909834</p>
+<p>Location: Bakhtiyarpur, Bihar, India</p>
+
+<div class="buttons">
+
+<a class="btn whatsapp" href="https://wa.me/919204909834">WhatsApp Me</a>
+
+<a class="btn email" href="mailto:xhotnagmaniyadav@gmail.com">Email Me</a>
+
+<a class="btn call" href="tel:9204909834">Call Me</a>
 
 </div>
 
-<script>
+</div>
 
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+<div class="section">
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+<div class="title">Career Objective</div>
 
-let particles = [];
+<p>I want to work in a professional environment where I can use my computer skills and grow my career.</p>
 
-for(let i=0;i<200;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*3,
-speedX:(Math.random()-0.5)*2,
-speedY:(Math.random()-0.5)*2
-});
-}
+</div>
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
+<div class="section">
 
-particles.forEach(p=>{
-p.x += p.speedX;
-p.y += p.speedY;
+<div class="title">Education</div>
 
-if(p.x>canvas.width || p.x<0) p.speedX *= -1;
-if(p.y>canvas.height || p.y<0) p.speedY *= -1;
+<p>12th Pass</p>
 
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fillStyle="cyan";
-ctx.fill();
-});
+<p>ADCA+ (Advanced Diploma in Computer Application)</p>
 
-requestAnimationFrame(animate);
-}
+<p>Institute: Pt. Sheel Bhadra Yajee Memorial Vocational Training Institute, Bakhtiyarpur</p>
 
-animate();
+</div>
 
-</script>
+<div class="section">
+
+<div class="title">Computer Skills</div>
+
+<p>HTML</p>
+<p>MS Word</p>
+<p>MS Excel</p>
+<p>Internet</p>
+<p>Typing</p>
+
+</div>
+
+<div class="section">
+
+<div class="title">Contact</div>
+
+<p>Email: xhotnagmaniyadav@gmail.com</p>
+<p>Phone: 9204909834</p>
+<p>WhatsApp Available</p>
+
+</div>
+
+<div class="footer">
+
+© 2026 Nagmani Yadav | Developer by Nagmani-Yadav
+
+</div>
+
+</div>
 
 </body>
 </html>
